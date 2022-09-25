@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "San Francisco Bayloop Drive Trajectory",
+  "width": 337,
+  "height": 400,
+  
+  "layer": [
+    {
+      "data": {
+        "url": "js/trimmed_bayloop.json",
+        "format": {"type": "topojson", "feature": "Bay Area Counties"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "data/drive.csv"
+      },
+      "mark": "line",
+      "encoding": {
+        "longitude": {
+          "field": "Lon \\[deg\\]",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Lat \\[deg\\]",
+          "type": "quantitative"
+        },
+        "order": {
+          "field": "order"
+        }
+      }
+    }
+  ]
+}
